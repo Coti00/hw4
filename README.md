@@ -9,7 +9,7 @@
 
 - **백엔드**: Node.js, Express
 - **프런트엔드**: React
-- **API**: TMDB API Key
+- **API**: TMDB API Key, KaKaoAPI
 - **기타** : dotenv
 
 ## 🚀 설치 및 실행 가이드
@@ -20,17 +20,18 @@
 
     [git clone https://github.com/Coti00/homework3.git](https://github.com/Coti00/homework4.git)
 3. **패키지 설치**
-
+    * 리액트
     cd client
 
     npm i
 
+    * Nodejs
     cd server
 
     npm i
 4. **환경 변수 설정**
 
-    - 프로젝트 루트경로에 .env-dev(개발), .env-prod(배포)를 생성하고 각 환경에 맞게 아래 변수 설정
+    * 프로젝트 루트경로에 .env-dev(개발), .env-prod(배포)를 생성하고 각 환경에 맞게 아래 변수 설정
 
     REACT_APP_API = 카카오API
 
@@ -42,16 +43,16 @@
 
     PORT = 포트번호
 5. **서버 실행**
-    - sh파일 실행 권한 주기
+    * sh파일 실행 권한 주기
 
     chmod +x deploy-dev.sh
 
     chmod +x deploy-prod.sh
 
-    - 개발환경 실행
+    * 개발환경 실행
         ./deploy-dev.sh
 
-    - 배포환경 실행
+    * 배포환경 실행
         ./deploy-prod.sh
 
 
