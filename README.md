@@ -21,39 +21,39 @@
     [git clone https://github.com/Coti00/homework3.git](https://github.com/Coti00/homework4.git)
 3. **패키지 설치**
     * 리액트
-    cd client
+    - cd client
 
-    npm i
+    - npm i
 
-    * Nodejs
-    cd server
+    Nodejs
+    - cd server
 
-    npm i
+    - npm i
 4. **환경 변수 설정**
 
-    * 프로젝트 루트경로에 .env-dev(개발), .env-prod(배포)를 생성하고 각 환경에 맞게 아래 변수 설정
+    프로젝트 루트경로에 .env-dev(개발), .env-prod(배포)를 생성하고 각 환경에 맞게 아래 변수 설정
 
-    REACT_APP_API = 카카오API
+    - REACT_APP_API = 카카오API
 
-    REACT_APP_URI = 카카오 리다이렉션 uri
+    - REACT_APP_URI = 카카오 리다이렉션 uri
 
-    REACT_APP_MOVIE = TMDB API Key
+    - REACT_APP_MOVIE = TMDB API Key
 
-    IP_ADDRESS = ip주소
+    - IP_ADDRESS = ip주소
 
-    PORT = 포트번호
+    - PORT = 포트번호
 5. **서버 실행**
-    * sh파일 실행 권한 주기
+    sh파일 실행 권한 주기
 
-    chmod +x deploy-dev.sh
+    - chmod +x deploy-dev.sh
 
-    chmod +x deploy-prod.sh
+    - chmod +x deploy-prod.sh
 
-    * 개발환경 실행
-        ./deploy-dev.sh
+    개발환경 실행(로컬에서 실행)
+    - ./deploy-dev.sh
 
-    * 배포환경 실행
-        ./deploy-prod.sh
+    배포환경 실행(서버에서 실행)
+    - ./deploy-prod.sh
 
 
 ## 📂 프로젝트 주요구조 설명
@@ -70,7 +70,7 @@ homework4/
 ├── .env-prod              
 ├── deploy-prod.sh
 ├── deploy-dev.sh
-├── ecosystem.config.js                
+├── ecosystem.config.js # pm2 개발-배포 환경에 따라 백그라운드에서 구동되도록 설정          
 └── README.md                    
 ```
 
