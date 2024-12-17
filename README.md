@@ -20,7 +20,7 @@
 
     [git clone https://github.com/Coti00/homework3.git](https://github.com/Coti00/homework4.git)
 3. **패키지 설치**
-    * 리액트
+    리액트
     - cd client
 
     - npm i

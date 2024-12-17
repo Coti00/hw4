@@ -3,6 +3,9 @@ const path = require('path');
 const app = express();
 const axios = require('axios');
 const dotenv = require('dotenv');
+const cors = require('cors');
+
+app.use(cors());
 
 const envFile = process.env.NODE_ENV === 'production' ? '.env-prod' : '.env-dev';
 dotenv.config({ path: path.resolve(__dirname, '..', envFile) });

@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from './Menu';
 import './Header.css';
 import { CSSTransition } from 'react-transition-group';
+import axios from 'axios';
 
 const MenuWrapper = styled.div`
     height: 50px;
@@ -158,9 +159,40 @@ const Header = () => {
         };
     }, []);
 
+    const snsLogout = async () => {
+        const TOKEN = localStorage.getItem('token');
+        try {
+            await axios.post(
+                'https://kapi.kakao.com/v1/user/logout',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${TOKEN}`,
+                    },
+                }
+            );
+            localStorage.removeItem('kakaoUser');
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            localStorage.removeItem('wishlist');
+            alert('카카오 로그아웃 성공!');
+            navigate('/signin');
+        } catch (error) {
+            console.error('카카오 로그아웃 실패', error);
+            alert('로그아웃 중 오류가 발생했습니다.');
+        }
+    };
+
+    // 로그아웃 핸들러 (카카오 로그아웃 여부 체크)
     const handleLogout = () => {
-        setUsername('');
-        navigate('/signin'); // 로그아웃 후 /signin으로 이동
+        if (localStorage.getItem('kakaoUser')) {
+            snsLogout(); // 카카오 로그아웃
+        } else {
+            setUsername('');
+            localStorage.removeItem('wishlist');
+            alert('로그아웃 되었습니다.');
+            navigate('/signin');
+        }
     };
 
     const menuclick = () => {

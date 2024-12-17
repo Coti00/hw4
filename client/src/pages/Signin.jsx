@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const REST_API_KEY = process.env.REACT_APP_API;
 const REDIRECT_URI = process.env.REACT_APP_URI;
-const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&prompt=login`;
 
 const fadeIn = keyframes`
     from {
@@ -240,7 +240,6 @@ const Sigin = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         if (code) {
-            console.log("인가 코드:", code);
             fetchAccessToken(code);
         }
     }, []);
@@ -263,10 +262,10 @@ const Sigin = () => {
             );
 
             const { access_token } = response.data;
-            console.log("엑세스 토큰:", access_token);
 
-            axios
-                .get("https://kapi.kakao.com/v2/user/me", {
+            localStorage.setItem('token',access_token);
+
+            axios.get("https://kapi.kakao.com/v2/user/me", {
                     headers: {
                         Authorization: `Bearer ${access_token}`,
                         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -288,6 +287,7 @@ const Sigin = () => {
             alert("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
         }
     };
+    
 
     return (
         <Container>
